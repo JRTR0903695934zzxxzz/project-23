@@ -6,7 +6,7 @@
           <div class="card mb-9">
             <h5 class="card-header">Product</h5>
             <div class="card-body">
-            <form action="{{ url('admin/producl/insert') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ url('admin/product/insert') }}" method="post" enctype="multipart/form-data">
               @csrf
               <div>
                 <label for="defaultFormControlInput" class="form-label">Name</label>
@@ -60,7 +60,7 @@
                   </div>
 
                 <label for="exampleFormControlSelect1" class="form-label">Category</label>
-                <select  name= "catrgory_id" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                <select  name= "category_id" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
                   <option selected>กรุณาเลือกประเภทสินค้า</option>
                   @foreach ($category as $cat )
                   <option value="{{ $cat->category_id}}">{{ $cat->name}}</option>

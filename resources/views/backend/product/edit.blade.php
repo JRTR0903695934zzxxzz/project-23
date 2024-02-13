@@ -63,12 +63,12 @@
                   </div>
 
                 <label for="exampleFormControlSelect1" class="form-label">Category</label>
-                <select  name= "catrgory_id" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                <select  name="category_id" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
                     @foreach ($cat as $c)
                     <option value="{{ $c->category_id}}"
                     @if($c->category_id == $pro->category_id)
-                    selected>
-                    @endif
+                    selected
+                    @endif>
                     {{ $c->name }}
                     </option>
                     @endforeach

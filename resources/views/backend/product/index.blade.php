@@ -36,7 +36,7 @@
                   <td>{{ $pro->created_at}}</td>
                   <td>{{ $pro->updated_at}}</td>
                   <td>
-                    <a href="{{ url('admin/producl/edit/'.$pro->product_id) }}"><i class='bx bxs-edit'></i></a>
+                    <a href="{{ url('admin/product/edit/'.$pro->product_id) }}"><i class='bx bxs-edit'></i></a>
                     <a href="{{ url('admin/product/delete/'.$pro->product_id) }}"><i class='bx bxs-trash'></i></a>
                   </td>
                   </tr>

@@ -45,9 +45,9 @@ Route::post('admin/category/update/{id}',[CategoryController::class,'update']);
 Route::get('admin/category/delete/{id}',[CategoryController::class,'delete']);
 
 //เมนู Product
-Route::get('admin/Product/index',[ProductController::class,'index'])->name('o.index');
-Route::get('admin/Product/create',[ProductController::class,'create'])->name('o.create');
-Route::post('admin/producl/insert',[ProductController::class,'insert']);
-Route::get('admin/producl/edit/{id}',[ProductController::class,'edit'])->name('p.edit');
-Route::post('admin/producl/update/{id}',[ProductController::class,'update']);
-Route::get('admin/producl/delete/{id}',[ProductController::class,'delete']);
+Route::get('admin/product/index',[ProductController::class,'index'])->name('o.index');
+Route::get('admin/product/create',[ProductController::class,'create'])->name('o.create');
+Route::post('admin/product/insert',[ProductController::class,'insert']);
+Route::get('admin/product/edit/{id}',[ProductController::class,'edit'])->name('p.edit');
+Route::post('admin/product/update/{id}',[ProductController::class,'update']);
+Route::get('admin/product/delete/{id}',[ProductController::class,'delete']);

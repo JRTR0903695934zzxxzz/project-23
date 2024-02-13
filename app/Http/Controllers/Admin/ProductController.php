@@ -14,12 +14,12 @@ class ProductController extends Controller
 {
     public function index(){
     $product = Product::orderBy('created_at','desc')->Paginate(10);
-        return view('backend.Product.index', compact('product'));
+        return view('backend.product.index', compact('product'));
     }
 
     public function create(){
         $category = Category::all();
-        return view('backend.Product.create',compact('category'));
+        return view('backend.product.create',compact('category'));
     }
 
     public function insert(Request $request){
@@ -28,7 +28,7 @@ class ProductController extends Controller
         $pro -> name = $request->name;
         $pro -> price = $request->price;
         $pro -> dscription = $request->dscription ;
-        $pro -> catrgory_id = $request->catrgory_id;
+        $pro -> category_id = $request->category_id;
         if($request->hasFile('image')){
         $filename = Str::random(10). '.' .$request->file('image')->getClientOriginalExtension();
         $request->file('image')->move(public_path().'/backend/product/', $filename);
@@ -37,11 +37,11 @@ class ProductController extends Controller
 
         $pro->image =$filename;
         }else{
-            $pro->image = "ไม่มีรูปภาพ";
+            $pro->image = 'no_image.jpg';
         }
         $pro->save();
         alert()->success('บันทึกข้อมูลสำเร็ว','ข้อมูลนี้ถูกบันทึกเเล้ว');
-        return redirect('admin/Product/index');
+        return redirect('admin/product/index');
     }
 
        public function edit($product_id){
@@ -61,7 +61,7 @@ class ProductController extends Controller
     $pro -> category_id = $request->category_id;
     if($request->hasFile('image')){
 
-        if($product->image != 'no_image.jpg'){
+        if($pro->image != 'no_image.jpg'){
             File::delete(public_path().'/backend/product/'. $pro->image);
             File::delete(public_path().'/backend/product/resize'. $pro->image);
         }
@@ -69,24 +69,22 @@ class ProductController extends Controller
     $request->file('image')->move(public_path().'/backend/product/', $filename);
 
    Image::make (public_path().'/backend/product/'. $filename)->resize(200,200)->save(public_path().'/backend/product/resize/' .$filename);
-    }
-    $pro->image =$filename;
 
+    $pro->image =$filename;
+    }
     $pro->update();
     alert()->success('บันทึกข้อมูลสำเร็ว','ข้อมูลนี้ถูกบันทึกเเล้ว');
-    return redirect('admin/Product/index');
+    return redirect('admin/product/index');
     }
 
       public function delete($product_id){
 
     $pro = Product::find($product_id);
-    if($product->image != 'no_image.jpg'){
-       File::delete(public_path().
-       '/backend/product/'.$product->image);
-       File::delete(public_path().
-       '/backend/product/resize/'.$product->image);
+    if($pro->image != 'no_image.jpg'){
+       File::delete(public_path().'/backend/product/'.$pro->image);
+       File::delete(public_path().'/backend/product/resize/'.$pro->image);
     }
-    $product->delete();
+    $pro->delete();
     alert()->success('ลบข้อมูลสำเร็จ','ข้อมูลนี้ถูกลบเเล้ว');
     return redirect('admin/product/index');
 
